@@ -6,7 +6,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --exec ts-node src/index.ts",
     "sdkgen": "npx sdkgen src/api.sdkgen -o src/api.ts -t typescript_nodeserver",
-    "sdkgenFront": "npx sdkgen src/api.sdkgen -o ../front/src/sdk/api.ts -t typescript_web"
+    "sdkgenFront": "npx sdkgen src/api.sdkgen -o ../front/src/sdk/api.ts -t typescript_web",
+    "build": "npx tsc",
+    "start": "node src/index.js"
   },
   "keywords": [],
   "author": "",
