@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+html, body {
+    @apply h-full w-full;
+}
+
+#root {
+    @apply h-full w-full;
+}

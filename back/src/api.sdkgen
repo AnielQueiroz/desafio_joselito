@@ -1,0 +1,54 @@
+type User {
+    id: uuid
+    name: string
+    email: string
+}
+
+type Profile {
+    id: uuid
+    name: string
+    email: string
+    createdAt: datetime
+    updatedAt: datetime
+}
+
+type Login {
+    email: string
+    password: string
+}
+
+type Signup {
+    name: string
+    email: string
+    password: string
+}
+
+type AuthPayload {
+    user: User
+    token: string
+}
+
+type ValidToken {
+    valid: bool
+    message: string
+}
+
+@statusCode 404
+error NotFound
+@statusCode 401
+error InvalidCredentials
+@rest POST /login [body {login}]
+fn login(login: Login): AuthPayload
+
+@statusCode 400
+error UserAlreadyExists
+@rest POST /signup [body {signUp}]
+fn signUp(signUp: Signup): User
+
+@rest GET /get-profile/{id} [header Authorization: {token}]
+fn getProfile(id: string, token: string?): Profile
+
+@statusCode 401
+error Unauthorized
+@rest GET /auth/check [header Authorization: {token}]
+fn checkAuth(token: string): User

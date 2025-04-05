@@ -1,0 +1,1 @@
+export function checkToken(token: string) {};
